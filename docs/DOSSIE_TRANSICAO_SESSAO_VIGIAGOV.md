@@ -106,6 +106,22 @@ git checkout -b feat/ingestao-cartoes-cpgf
 
 ---
 
+## 6.1. Atualização de Sessão (2026-10-25, fechamento)
+
+- **Branch ativa ao fechar:** `docs/fundamentos-civicos` (limpa, pushada, commit `83e5fb9`).
+- **Ambiente revalidado:** `uv run vigiagov check` → 3 endpoints 200 OK; `uv run pytest` → 2 passed.
+- **Acervo criado:** `docs/fundamentos/` (README com regras de fontes, CATALOGO_FONTES_OFICIAIS.md e síntese factual de regimes sociais em `202610/25/`). Regra persistida em memória: **toda síntese de valor social/político/econômico exige fonte oficial linkada com data de acesso**.
+- **Payload real de `/cartoes` confirmado:** lista pura de 15 itens/página (paginar até lista vazia); `valorTransacao` string BR (`"97,89"`); datas DD/MM/YYYY; CNPJ com máscara (limpar para join com CEIS); esquema aninhado `estabelecimento`/`unidadeGestora`/`orgaoVinculado`/`orgaoMaximo`/`portador`.
+- **Plano da VIGIA-8 aprovado na forma** (6 fases TDD, branch `feat/ingestao-cartoes-cpgf`).
+- **Relatório de fechamento:** `docs/reports/202610/25/2026-10-25-fechamento-diario.md`.
+
+**Decisões pendentes para a próxima sessão:**
+1. Ordem de merge (PR VIGIA-6 antes do PR docs).
+2. VIGIA-7 (cache) subsumida pelo Parquet na VIGIA-8, ou executada antes?
+3. Manter `portador.nome` no schema com nota de base legal?
+
+---
+
 ## 7. Próxima Ação Imediata Recomendada (Roadmap do Turno)
 
 1. **Atacar a tarefa `VIGIA-8` (Malha 1 de Cartões CPGF):**
